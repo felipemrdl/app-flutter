@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../config/custom_colors.dart';
-
 class NomeApp extends StatelessWidget {
   final Color? greenTitleColor;
   final double textSize;

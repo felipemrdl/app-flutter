@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/auth/components/input_textfield.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flutter_application_1/src/auth/sign_up_screen.dart';
+import 'package:flutter_application_1/src/pages/auth/sign_up_screen.dart';
 
+import '../../config/custom_colors.dart';
 import '../base/base_screen.dart';
-import '../config/custom_colors.dart';
+import 'components/input_textfield.dart';
 import 'components/nome_app.dart';
 
 class SignInScreen extends StatelessWidget {

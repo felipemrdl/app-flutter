@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
-import '../config/custom_colors.dart';
+import '../../config/app_data.dart' as mock;
+import '../../config/custom_colors.dart';
 import 'components/categorias.dart';
+import 'components/item_tile.dart';
 
 class HomeTab extends StatefulWidget {
   HomeTab({super.key});
@@ -11,14 +13,6 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  List<String> categorias = [
-    'Frutas',
-    'Grãos',
-    'Verduras',
-    'Temperos',
-    'Cereais'
-  ];
-
   String categoriaSelecionada = 'Frutas';
 
   @override
@@ -99,7 +93,6 @@ class _HomeTabState extends State<HomeTab> {
                       ))),
             ),
           ),
-          
           Container(
             padding: const EdgeInsets.only(left: 25),
             height: 40,
@@ -109,15 +102,33 @@ class _HomeTabState extends State<HomeTab> {
                 return Categorias(
                   onPressed: () {
                     setState(() {
-                      categoriaSelecionada = categorias[index];
+                      categoriaSelecionada = mock.categorias[index];
                     });
                   },
-                  categoria: categorias[index],
-                  isSelected: categorias[index] == categoriaSelecionada,
+                  categoria: mock.categorias[index],
+                  isSelected: mock.categorias[index] == categoriaSelecionada,
                 );
               },
-              separatorBuilder:(_, index) => const SizedBox(width: 10 ),
-              itemCount: categorias.length,
+              separatorBuilder: (_, index) => const SizedBox(width: 10),
+              itemCount: mock.categorias.length,
+            ),
+          ),
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              physics: const BouncingScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 9 / 11.5
+              ),
+              itemCount: mock.items.length,
+              itemBuilder: (_, index) {
+                return ItemTile(
+                  item: mock.items[index]
+                );
+              },
             ),
           ),
         ],
